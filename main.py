@@ -1,40 +1,47 @@
-print("Hello")
-
 import random
-import string
 
-# RandInt=random.randint(0,50)
-# print(RandInt)
-#
-#
-# RandFloat=random.uniform(0,50)
-# print(RandFloat)
-
-# stringMyString="bdgfugfeugfyyeygwu"
-# StringRand=random.choice(stringMyString)
+# ex1
 
 
-# x = int(input("Enter a string"))
-# randomNum=random.randint(0,x)
-# print(randomNum)
+def func():
+    myList=[]
+    for i in range(10):
+        myList.append(random.randint(-100,100))
+    print(f"List:{myList}")
+    return myList
 
-# x=str(input("Enter a string"))
-# for i in range(5):
-#     y = random.choice(x)
-# for g in range(5):
-#     print(y)
+def funct():
+    rand = func()
+    rand.sort()
+    max_n=rand[9]
+    print(f"Max number {max_n}")
+    min_n=rand[0]
+    print(f"Min number {min_n}")
+funct()
 
 
-# print(string.ascii_lowercase)
-# print(string.ascii_uppercase)
-# print(string.punctuation)
-# print(string.digits)
+# ex2
 
+def computer():
+    gamelist=['камінь','ножиці','папір']
+    computer_input = random.choice(gamelist)
+    return computer_input
 
-import string
-x = int(input("Введіть довжину пароля"))
+def user():
+    user_input=input("Виберіть камінь\ножиці\папір ")
+    return user_input.lower()
 
-for i in range(x):
-   a=string.ascii_lowercase+string.ascii_uppercase+string.digits+string.punctuation
-   x=random.choice(a)
-   print(x)
+def game():
+    gamelist=['камінь','ножиці','папір']
+    computer_input = computer()
+    user_input = user()
+    if user_input == gamelist[0] and computer_input == gamelist[1] or user_input == gamelist[1] and computer_input == gamelist[2] or user_input == gamelist[2] and computer_input == gamelist[0]:
+        print("Ви перемогли!")
+    if user_input == gamelist[1] and computer_input == gamelist[0] or user_input == gamelist[2] and computer_input == gamelist[1] or user_input == gamelist[0] and computer_input == gamelist[2]:
+        print("Переміг комп'ютер!")
+    if user_input == gamelist[0] and computer_input == gamelist[0] or user_input == gamelist[1] and computer_input == gamelist[1] or user_input == gamelist[2] and computer_input == gamelist[2]:
+        print("Нічия!")
+    print("Ваш вибір -",user_input)
+    print("Вибір комп'ютера -",computer_input)
+
+game()
