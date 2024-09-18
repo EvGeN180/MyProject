@@ -1,47 +1,31 @@
-import random
+class Math:
+    @staticmethod
+    def plus(a,b):
+        return a + b
 
-# ex1
+    @staticmethod
+    def minus(a,b):
+        return a - b
 
+    @staticmethod
+    def mnozhennya(a,b):
+        return a * b
 
-def func():
-    myList=[]
-    for i in range(10):
-        myList.append(random.randint(-100,100))
-    print(f"List:{myList}")
-    return myList
+    @staticmethod
+    def dilennya(a,b):
+        if b!=0:
+            return a / b
+        else:
+            return ZeroDivisionError
 
-def funct():
-    rand = func()
-    rand.sort()
-    max_n=rand[9]
-    print(f"Max number {max_n}")
-    min_n=rand[0]
-    print(f"Min number {min_n}")
-funct()
+try:            
+    num1 = float(input("Enter 1 number "))
+    num2 = float(input("Enter 2 number "))
 
+    print(f"a + b = {Math.plus(num1,num2)}")
+    print(f"a + b = {Math.minus(num1,num2)}")
+    print(f"a + b = {Math.mnozhennya(num1,num2)}")
+    print(f"a + b = {Math.dilennya(num1,num2)}")
 
-# ex2
-
-def computer():
-    gamelist=['камінь','ножиці','папір']
-    computer_input = random.choice(gamelist)
-    return computer_input
-
-def user():
-    user_input=input("Виберіть камінь\ножиці\папір ")
-    return user_input.lower()
-
-def game():
-    gamelist=['камінь','ножиці','папір']
-    computer_input = computer()
-    user_input = user()
-    if user_input == gamelist[0] and computer_input == gamelist[1] or user_input == gamelist[1] and computer_input == gamelist[2] or user_input == gamelist[2] and computer_input == gamelist[0]:
-        print("Ви перемогли!")
-    if user_input == gamelist[1] and computer_input == gamelist[0] or user_input == gamelist[2] and computer_input == gamelist[1] or user_input == gamelist[0] and computer_input == gamelist[2]:
-        print("Переміг комп'ютер!")
-    if user_input == gamelist[0] and computer_input == gamelist[0] or user_input == gamelist[1] and computer_input == gamelist[1] or user_input == gamelist[2] and computer_input == gamelist[2]:
-        print("Нічия!")
-    print("Ваш вибір -",user_input)
-    print("Вибір комп'ютера -",computer_input)
-
-game()
+except ValueError:
+    print("ERROR,incorrect input")
