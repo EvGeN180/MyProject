@@ -31,6 +31,10 @@ class WorkerRobot(Robot):
         else:
             print(f"robot need more power")
 
+    def save_file(self, file):
+        with open(file, 'w') as file:
+            file.write(f"name: {self.name}, power_level: {self.power_level}")
+
 
 class DefenseRobot(Robot):
     def __init__(self,name,model,weapon):
@@ -44,6 +48,11 @@ class DefenseRobot(Robot):
         else:
             print(f"robot need more power")
 
+    def __del__(self):
+        print("Object cleaned")
+
+
+
 class ServiceRobot(Robot):
     def __init__(self,name,model,service_type):
         super().__init__(name,model)
@@ -56,10 +65,15 @@ class ServiceRobot(Robot):
         else:
             print(f"robot need more power")
 
+    def __del__(self):
+        print("Object cleaned")
+
+
 work = WorkerRobot('Bob',"X1","Wrench")
 work.perform_task()
 work.charge(1)
 work.show_info()
+work.save_file("my")
 
 defend = DefenseRobot("Defender","Z3","Laser")
 defend.perform_task()
